@@ -1,0 +1,492 @@
+[
+ {
+  "id": 1,
+  "nombre": "Ruido al frenar",
+  "descripcion": "Chirrido, rechinido o raspado al frenar",
+  "patron_es": "(chirr|rechin|ruid|raspa)\\w*.*fren|fren\\w*.*(chirr|rechin|ruid|raspa)",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 2,
+  "nombre": "Pedal de freno blando",
+  "descripcion": "El pedal se hunde o se siente esponjoso",
+  "patron_es": "pedal.*(blando|esponj|hund|piso|suelo|largo)|fren\\w* (blando|esponj)",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 3,
+  "nombre": "Frenos no responden",
+  "descripcion": "Distancia de frenado larga o perdida de frenado",
+  "patron_es": "fren\\w* (no (respond|funcion|frena|sirv)|fall)|no frena|tarda (mucho )?en (frenar|parar)|no (para|detiene)",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 4,
+  "nombre": "Vibracion al frenar",
+  "descripcion": "El pedal o el volante vibran al frenar",
+  "patron_es": "vibr\\w*.*fren|fren\\w*.*(vibr|puls)|puls\\w* (en|al) (el )?(pedal|fren)",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 5,
+  "nombre": "Luz de freno o ABS encendida",
+  "descripcion": "Testigo de frenos o ABS en el tablero",
+  "patron_es": "(luz|testigo|indicador).*(abs|fren)|abs.*(luz|testigo|encendid)",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 6,
+  "nombre": "Sobrecalentamiento del motor",
+  "descripcion": "Temperatura alta o perdida de refrigerante",
+  "patron_es": "sobrecalent|recalent|temperatura.*(alta|sube|elevad)|se calienta (el )?motor|motor.*caliente|refrigerante|humo.*capo",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 7,
+  "nombre": "Perdida de potencia",
+  "descripcion": "El vehiculo no acelera o pierde fuerza",
+  "patron_es": "perdida de (potencia|fuerza)|sin (fuerza|potencia)|falta de (fuerza|potencia)|no acelera|jalone|tiron|se ahoga al acelerar",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 8,
+  "nombre": "Golpeteo o ruido de motor",
+  "descripcion": "Ruidos metalicos o golpeteo en el motor",
+  "patron_es": "golpete|ruido.*motor|motor.*(ruido|golpea|truena|traquete)|traquete|cascabel",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 9,
+  "nombre": "Testigo de motor encendido",
+  "descripcion": "Luz check engine encendida",
+  "patron_es": "check engine|(testigo|luz|indicador).*(motor|check)|luz de falla",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 10,
+  "nombre": "Consumo o fuga de aceite",
+  "descripcion": "Gasta aceite, fuga o humo azul",
+  "patron_es": "aceite|humo azul",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 11,
+  "nombre": "Motor se apaga",
+  "descripcion": "El motor se apaga o se cala solo",
+  "patron_es": "(motor|carro|auto|vehiculo)\\w* se (apaga|cala|ahoga|muere|detiene)|se (cala|ahoga)|se apaga (el )?(motor|carro|auto|vehiculo)|se apaga (solo|al (frenar|detenerse|arrancar))",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 12,
+  "nombre": "Ralenti irregular",
+  "descripcion": "El motor tiembla o falla en ralenti",
+  "patron_es": "ralenti|marcha minima|motor (tiembla|vibra|falla)|falla.*cilindro|fallo de encendido|misfire",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 13,
+  "nombre": "Cambios bruscos o patinaje",
+  "descripcion": "La caja patina o cambia con tirones",
+  "patron_es": "patina|resbal\\w*.*(caja|cambio|marcha)|cambios? (brusc|duro|fuerte)|tiron al cambiar|jalones? (al|en) (el )?cambio",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 14,
+  "nombre": "No entra la marcha",
+  "descripcion": "No engrana marchas o reversa",
+  "patron_es": "no (entra|engrana|cambia|mete).*(marcha|cambio|reversa|velocidad)|(marcha|cambio|reversa).*(no entra|se traba|se queda)",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 15,
+  "nombre": "Ruido en caja o embrague",
+  "descripcion": "Zumbidos o ruidos en caja o embrague",
+  "patron_es": "ruido.*(caja|transmision|embrague)|embrague|zumbido.*(caja|transmision)|caja.*(ruido|zumba|chilla)",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 16,
+  "nombre": "Fuga de liquido de transmision",
+  "descripcion": "Perdida de aceite o liquido de la caja",
+  "patron_es": "(liquido|aceite|fluido) de (la )?(caja|transmision)|atf",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 17,
+  "nombre": "Ruido en suspension",
+  "descripcion": "Golpes o ruidos al pasar baches",
+  "patron_es": "ruido.*(suspension|amortiguador|bache)|suspension.*ruido|golpetea|truena.*bache|cruje|crujido",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 18,
+  "nombre": "Amortiguadores desgastados",
+  "descripcion": "Rebote excesivo o fuga en amortiguadores",
+  "patron_es": "amortiguador|rebote|se (hunde|balancea)|balanceo excesivo",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 19,
+  "nombre": "Vehiculo inclinado o resorte roto",
+  "descripcion": "Altura irregular, resorte roto",
+  "patron_es": "inclinad|ladead|resorte|espiral|altura (irregular|desigual)|desnivel",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 20,
+  "nombre": "Desgaste de bujes o rotulas",
+  "descripcion": "Rotulas, bujes o brazos de control danados",
+  "patron_es": "rotula|buje|brazo de control|terminal de direccion|barra estabilizadora",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 21,
+  "nombre": "Volante vibra",
+  "descripcion": "El volante vibra o se sacude",
+  "patron_es": "volante.*(vibra|tiembla|tiritea|sacude)|vibr\\w*.*volante",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 22,
+  "nombre": "Direccion dura o pierde asistencia",
+  "descripcion": "Direccion pesada o perdida de asistencia",
+  "patron_es": "direccion (esta |se siente |se pone )?(dura|pesada|se traba|falla)|volante (esta |se siente )?(duro|pesado|se traba)|perdida de (la )?direccion|direccion hidraulica",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 23,
+  "nombre": "Vehiculo se desvia",
+  "descripcion": "Se jala a un lado o requiere alineacion",
+  "patron_es": "se (jala|va|desvia|carga) (a la |hacia )?(izquierda|derecha)|alineacion|jala (a|hacia)",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 24,
+  "nombre": "Juego o ruido en la direccion",
+  "descripcion": "Volante flojo o ruidos al girar",
+  "patron_es": "juego (en|del) (el )?volante|direccion (floja|suelta)|volante flojo|ruido.*direccion",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 25,
+  "nombre": "Luces fallan o parpadean",
+  "descripcion": "Focos que parpadean, tenues o no encienden",
+  "patron_es": "luces?.*(parpadea|tenue|no (enciende|funciona|prende)|se apaga)|parpadea|focos? (quemado|no (enciende|funciona))|faros? (no|tenue)",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 26,
+  "nombre": "Fusible quemado o cortocircuito",
+  "descripcion": "Fusibles, cables quemados u olor a quemado",
+  "patron_es": "fusible|cortocircuito|corto circuito|cableado|olor a quemado|cables? (quemado|derretid)",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 27,
+  "nombre": "Tablero o testigos fallan",
+  "descripcion": "Tablero que se apaga o testigos extranos",
+  "patron_es": "tablero (se )?(apaga|oscuro|falla)|cluster|testigos? (encendid|se encienden|raros)|luces de advertencia",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 28,
+  "nombre": "Vidrios, seguros o control remoto fallan",
+  "descripcion": "Elevalunas, seguros o llave no funcionan",
+  "patron_es": "(vidrio|ventana|seguro|espejo)s? electric|alzavidrios|alzacristal|cierre centralizado|control remoto|llave inteligente",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 29,
+  "nombre": "No arranca o solo hace clic",
+  "descripcion": "El motor no gira o solo se escucha un clic",
+  "patron_es": "no (arranca|enciende|prende|da marcha)|solo (hace )?clic|hace clic|click",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 30,
+  "nombre": "Bateria se descarga",
+  "descripcion": "Bateria que se agota o requiere pasar corriente",
+  "patron_es": "bateria (se )?(descarga|muere|agota|baja|dura poco)|descarga.*bateria|pasar corriente|sin bateria",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 31,
+  "nombre": "Testigo de bateria o alternador",
+  "descripcion": "Luz de bateria o falla del sistema de carga",
+  "patron_es": "(luz|testigo|indicador).*bateria|alternador|sistema de carga",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 32,
+  "nombre": "Bornes corroidos o bateria hinchada",
+  "descripcion": "Sulfatacion o bateria deformada",
+  "patron_es": "sulfat|corros|hinchad|bornes",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 33,
+  "nombre": "Perdida de presion en llantas",
+  "descripcion": "Llanta baja, ponchada o testigo de presion",
+  "patron_es": "pierde (aire|presion)|(llanta|neumatico)s? (baja|ponchad|desinflad)|presion de (las )?(llantas|neumaticos)|tpms|ponchad",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 34,
+  "nombre": "Desgaste irregular de llantas",
+  "descripcion": "Llantas lisas, gastadas o con desgaste desigual",
+  "patron_es": "desgaste.*(llanta|neumatic|irregular)|llantas? (lisas|gastadas|calvas)|calva",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 35,
+  "nombre": "Reventon o banda desprendida",
+  "descripcion": "Llanta reventada o con burbuja",
+  "patron_es": "reven\\w*|burbuja|abultamiento|desprend\\w*.*(banda|llanta)",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 36,
+  "nombre": "Ruedas desbalanceadas",
+  "descripcion": "Vibracion por balanceo de ruedas",
+  "patron_es": "balanceo de (las )?(llantas|ruedas)|desbalance|rueda.*(vibra|tambalea)|vibr\\w*.*rueda",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 37,
+  "nombre": "Olor o fuga de combustible",
+  "descripcion": "Olor a gasolina o fuga en el tanque",
+  "patron_es": "olor a (gasolina|combustible|diesel)|fuga de (gasolina|combustible)|huele a (gasolina|combustible)",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 38,
+  "nombre": "Falla de bomba o inyectores",
+  "descripcion": "Bomba de combustible, inyectores o filtro",
+  "patron_es": "bomba de (gasolina|combustible)|inyector|filtro de (gasolina|combustible)|presion de combustible",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 39,
+  "nombre": "Humo o ruido en el escape",
+  "descripcion": "Escape, silenciador o catalizador con problemas",
+  "patron_es": "escape|silenciador|catalizador|humo (negro|blanco)|tubo de escape",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 40,
+  "nombre": "Consumo excesivo de combustible",
+  "descripcion": "El vehiculo gasta mas gasolina de lo normal",
+  "patron_es": "consume (mucho|demasiado)|gasta (mucha |demasiada )?gasolina|consumo (alto|excesivo|elevado)",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 41,
+  "nombre": "Aire acondicionado no enfria",
+  "descripcion": "El A/C no enfria o sale aire caliente",
+  "patron_es": "(aire acondicionado|a/c|\\bac\\b|clima).*(no (enfria|funciona|sale frio)|caliente)|no enfria|sale (aire )?caliente|no sale frio",
+  "regla_climatizacion": true
+ },
+ {
+  "id": 42,
+  "nombre": "Calefaccion o ventilador no funciona",
+  "descripcion": "Ventilador, calefaccion o desempanador fallan",
+  "patron_es": "calefaccion|ventilador|desempa|blower|no (sale|calienta)",
+  "regla_climatizacion": true
+ },
+ {
+  "id": 43,
+  "nombre": "Olor o fuga en el aire acondicionado",
+  "descripcion": "Olor a humedad o fuga de refrigerante",
+  "patron_es": "olor.*(aire|clima)|moho|gas del aire|fuga.*aire acond",
+  "regla_climatizacion": true
+ },
+ {
+  "id": 44,
+  "nombre": "Ruido del compresor de A/C",
+  "descripcion": "Compresor del aire acondicionado ruidoso",
+  "patron_es": "compresor",
+  "regla_climatizacion": true
+ },
+ {
+  "id": 45,
+  "nombre": "Menciona frenos",
+  "descripcion": "Se nombran frenos, pastillas, discos o calipers",
+  "patron_es": "fren|pastilla|balata|disco de freno|caliper",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 46,
+  "nombre": "Menciona motor",
+  "descripcion": "Se nombra el motor, cilindros, turbo o distribucion",
+  "patron_es": "\\bmotor\\b(?! de arranque)|cilindro|piston|turbo|bujia|correa de distribucion|cadena de distribucion",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 47,
+  "nombre": "Menciona transmision",
+  "descripcion": "Se nombra la caja, transmision, eje o cardan",
+  "patron_es": "transmision|caja de cambios|caja automatica|caja manual|\\bcvt\\b|cardan|\\beje\\b|flecha",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 48,
+  "nombre": "Menciona suspension",
+  "descripcion": "Se nombra suspension, barra o rodamientos",
+  "patron_es": "suspension|barra estabilizadora|rodamiento|maza|cubo de rueda",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 49,
+  "nombre": "Menciona direccion",
+  "descripcion": "Se nombra direccion, volante o cremallera",
+  "patron_es": "direccion|volante|cremallera|timon",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 50,
+  "nombre": "Menciona llantas",
+  "descripcion": "Se nombran llantas, neumaticos o ruedas",
+  "patron_es": "llanta|neumatico|\\brueda|\\baro\\b",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 51,
+  "nombre": "Menciona bateria o arranque",
+  "descripcion": "Se nombra bateria, alternador o motor de arranque",
+  "patron_es": "bateria|alternador|motor de arranque|\\barranque\\b|\\bburro\\b",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 52,
+  "nombre": "Menciona sistema electrico",
+  "descripcion": "Se nombran luces, fusibles, sensores o modulos",
+  "patron_es": "electric|cableado|fusible|\\brele\\b|modulo|sensor|\\bluces?\\b|\\bfaros?\\b|\\bfocos?\\b",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 53,
+  "nombre": "Menciona combustible o escape",
+  "descripcion": "Se nombra gasolina, diesel, tanque o escape",
+  "patron_es": "combustible|gasolina|diesel|tanque|escape|silenciador|catalizador",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 54,
+  "nombre": "Olor a quemado",
+  "descripcion": "Olor a quemado, plastico o humo",
+  "patron_es": "olor a (quemado|humo|plastico)|huele a (quemado|humo)",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 55,
+  "nombre": "Humo",
+  "descripcion": "Sale humo del vehiculo",
+  "patron_es": "\\bhumo",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 56,
+  "nombre": "Fuego o incendio",
+  "descripcion": "El vehiculo se incendio o salieron llamas",
+  "patron_es": "incendi|fuego|llamas|se prendio",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 57,
+  "nombre": "Fuga de liquido",
+  "descripcion": "Gotea o pierde liquido",
+  "patron_es": "fuga|gotea|derrame|pierde liquido|charco",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 58,
+  "nombre": "Chirrido",
+  "descripcion": "Ruido agudo de chirrido",
+  "patron_es": "chirri|rechin|chillido",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 59,
+  "nombre": "Golpeteo",
+  "descripcion": "Golpes o traqueteo",
+  "patron_es": "golpe|golpete|traquete|cascabel",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 60,
+  "nombre": "Zumbido o raspado",
+  "descripcion": "Zumbido, ruido de raspado o molienda",
+  "patron_es": "zumbido|zumba|raspa|rechina|muele",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 61,
+  "nombre": "Vibracion",
+  "descripcion": "El vehiculo o una parte vibra o se sacude",
+  "patron_es": "vibra|tiembla|sacude|tiritea",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 62,
+  "nombre": "Perdida de control",
+  "descripcion": "El conductor pierde el control del vehiculo",
+  "patron_es": "perdi\\w* (el )?control|perdida de control|sin control",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 63,
+  "nombre": "Testigo encendido",
+  "descripcion": "Se enciende una luz de advertencia en el tablero",
+  "patron_es": "testigo|luz (del tablero|de advertencia|encendida)|se enciende la luz",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 64,
+  "nombre": "Arranque dificil",
+  "descripcion": "Le cuesta arrancar o arranca lento",
+  "patron_es": "(cuesta|tarda|le cuesta) arrancar|arranque lento|arranca con dificultad",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 65,
+  "nombre": "Aceleracion repentina",
+  "descripcion": "El vehiculo se acelera solo",
+  "patron_es": "aceleracion (repentina|sola)|se acelera solo",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 66,
+  "nombre": "Menciona acelerador",
+  "descripcion": "Se nombra el acelerador o la mariposa",
+  "patron_es": "acelerador|mariposa",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 67,
+  "nombre": "Desgaste o piezas gastadas",
+  "descripcion": "Piezas desgastadas o muy usadas",
+  "patron_es": "desgast|gastad",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 68,
+  "nombre": "Oxido o corrosion",
+  "descripcion": "Oxido o corrosion en piezas",
+  "patron_es": "oxid|corrosion",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 69,
+  "nombre": "Ruido al girar",
+  "descripcion": "Ruido o clic al girar el volante",
+  "patron_es": "ruido (al|cuando) (girar|virar|dar vuelta)|clic al girar",
+  "regla_climatizacion": false
+ },
+ {
+  "id": 70,
+  "nombre": "Se jala al frenar",
+  "descripcion": "El vehiculo se desvia al frenar",
+  "patron_es": "se (jala|va).*fren",
+  "regla_climatizacion": false
+ }
+]
