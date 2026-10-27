@@ -5,26 +5,40 @@ Diagnóstico del taller y proyección de demanda de inventario. Responde por NAT
 ## Asuntos
 
 - `ia.health` — confirma que el modelo de diagnóstico está cargado.
-- `ia.diagnostico` — recibe `{ "texto": "..." }` y devuelve categoría, confianza, prioridad, síntomas, top 3, servicios sugeridos y una explicación armada con ese resultado.
-- `ia.demanda.predecir` — recibe series diarias de salidas por repuesto y devuelve proyección a 30 días.
+- `ia.diagnostico` — recibe `{ "texto": "..." }` y devuelve categoría, confianza, prioridad, síntomas, top 3, servicios y explicación.
+- `ia.demanda.predecir` — recibe series diarias de salidas por repuesto y proyecta demanda a 30 días.
 
 Climatización se resuelve por regla. Si la confianza queda bajo 0.30, el estado es no concluyente.
 
-## Diagnóstico
+## Modelos (no van en Git)
 
-El archivo `modelo/modelo_diagnostico_rf.joblib` no va en Git. Hay que copiarlo a esa carpeta antes de construir la imagen.
+Antes de construir la imagen hay que tener en `modelo/`:
 
-Variables:
+- `modelo_diagnostico_rf.joblib` — Random Forest de fallas.
+- `modelo_demanda.joblib` — Random Forest de demanda de repuestos.
 
-- `MODELO_PATH` — ruta al joblib de diagnóstico (default `/app/modelo/modelo_diagnostico_rf.joblib`)
-- `CATALOGO_PATH` — catálogo de síntomas
-- `NATS_SERVICE` — URL de NATS
+Ambos están en `.gitignore` (`modelo/*.joblib`).
 
-## Demanda (pendiente de modelo)
+### Entrenar la demanda
 
-Hoy `app/demanda.py` es un **stub**: media de la serie diaria × 30, con `fuente: "stub"`.
+Desde `ms-ia`, con las mismas dependencias del servicio:
 
-Contrato request:
+```bash
+python scripts/entrenar_demanda.py
+```
+
+Genera `modelo/modelo_demanda.joblib` con series sintéticas (Poisson) y un `RandomForestRegressor`.
+
+### Variables
+
+- `NATS_SERVICE`
+- `MODELO_PATH` — diagnóstico
+- `MODELO_DEMANDA_PATH` — demanda (si falta el archivo, se usa stub)
+- `CATALOGO_PATH`
+
+## Contrato demanda
+
+Request:
 
 ```json
 {
@@ -39,7 +53,7 @@ Contrato request:
 }
 ```
 
-Contrato response:
+Response:
 
 ```json
 {
@@ -49,15 +63,10 @@ Contrato response:
       "demanda30": 12,
       "coberturaDias": 105,
       "sugerido": 0,
-      "fuente": "stub"
+      "fuente": "modelo"
     }
   ]
 }
 ```
 
-Para enchufar el modelo más adelante:
-
-1. Entrenar un regressor sklearn y guardar `modelo/modelo_demanda.joblib` (gitignore igual que el de diagnóstico).
-2. Definir `MODELO_DEMANDA_PATH` en el entorno / compose.
-3. En `app/demanda.py`, cargar el joblib y devolver `fuente: "modelo"` manteniendo las mismas claves del contrato.
-4. El gateway ya llama a `ia.demanda.predecir` al listar inventario; si ms-ia no responde, usa la proyección local de ms-core (`fuente: "local"`).
+`fuente` puede ser `modelo` (joblib cargado) o `stub` (media de la serie × 30). El gateway, si ms-ia no responde, usa la proyección local de ms-core (`fuente: "local"`).

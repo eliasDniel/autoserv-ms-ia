@@ -11,6 +11,7 @@ COPY modelo ./modelo
 
 ENV NATS_SERVICE=nats://nats:4222
 ENV MODELO_PATH=/app/modelo/modelo_diagnostico_rf.joblib
+ENV MODELO_DEMANDA_PATH=/app/modelo/modelo_demanda.joblib
 ENV CATALOGO_PATH=/app/datos/catalogo_sintomas.json
 
 CMD ["python", "-m", "app.main"]

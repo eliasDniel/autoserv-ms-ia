@@ -6,7 +6,7 @@ import signal
 
 from nats.aio.client import Client as NATS
 
-from app.demanda import predecir as predecir_demanda
+from app.demanda import cargar_motor, predecir as predecir_demanda
 from app.diagnostico import MotorDiagnostico
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -30,9 +30,16 @@ async def main():
         os.environ.get("CATALOGO_PATH", "/app/datos/catalogo_sintomas.json"),
     )
     log.info(
-        "Modelo cargado: %s variables, umbral %s",
+        "Modelo diagnóstico cargado: %s variables, umbral %s",
         len(motor.sintomas_modelo),
         motor.umbral,
+    )
+    motor_demanda = cargar_motor(
+        os.environ.get("MODELO_DEMANDA_PATH", "/app/modelo/modelo_demanda.joblib")
+    )
+    log.info(
+        "Demanda: %s",
+        "modelo listo" if motor_demanda.modelo is not None else "stub (sin joblib)",
     )
 
     nc = NATS()
