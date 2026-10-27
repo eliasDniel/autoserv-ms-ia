@@ -6,12 +6,13 @@ import signal
 
 from nats.aio.client import Client as NATS
 
+from app.demanda import predecir as predecir_demanda
 from app.diagnostico import MotorDiagnostico
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("ms-ia")
 
-ASUNTOS = ("ia.health", "ia.diagnostico")
+ASUNTOS = ("ia.health", "ia.diagnostico", "ia.demanda.predecir")
 
 
 def responder(packet, msg, resultado=None, error=None):
@@ -56,13 +57,22 @@ async def main():
                 if not isinstance(texto, str) or not texto.strip():
                     raise ValueError("Escribe el síntoma del vehículo.")
                 salida = responder(packet, msg, {"resultados": motor.diagnosticar(texto)})
+            elif patron == "ia.demanda.predecir":
+                items = datos.get("items")
+                if not isinstance(items, list):
+                    raise ValueError("Envía la lista de ítems con serie diaria.")
+                salida = responder(
+                    packet,
+                    msg,
+                    {"proyecciones": predecir_demanda(items)},
+                )
             else:
                 raise ValueError(f"Patrón no reconocido: {patron}")
         except ValueError as exc:
             salida = responder(packet, msg, error=str(exc))
         except Exception:
-            log.exception("Fallo al diagnosticar")
-            salida = responder(packet, msg, error="No se pudo calcular el diagnóstico.")
+            log.exception("Fallo en ms-ia")
+            salida = responder(packet, msg, error="No se pudo procesar la solicitud de IA.")
         if msg.reply:
             await msg.respond(salida)
 
